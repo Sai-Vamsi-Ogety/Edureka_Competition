@@ -1,3 +1,44 @@
+<pre>Name: Sai Vamsi Ogety                                                                            A.S.U, Tempe, AZ,USA
+E-mail:Ogetyvamsi@gmail.com                                                                      Date: 03-08-2019
+                                                <b>Edureka Techathon</b>
+                                           <b>Car Price Prediction Challenge</b> </pre>
+
+### Intro : 
+- Buying a used car can be tough. The question of whether we are paying the right price? or are we paying more? 
+  troubles lot of people in deciding to buy. Data science can tackle this issue by taking the leverage of the historical
+data.
+
+### Goal: 
+- To develop a model which will predict the car_price based on the input data.
+
+### Workflow: 
+- The Workflow i followed is pretty much how everyone do a data science project.
+1. Understand the goal or objective first
+2. Import the dataset
+3. Data cleaning and Exploration
+4. Baseline Model Building
+5. Improving the Model or Build another model
+6. Concluding the Results.
+### Libraries used​ :
+- Data_cleaning and Exploration :Numpy, Pandas
+-  Plotting: Seaborn,matplotlib.pyplot
+-  Machine learning : sklearn
+### Algorithms​:
+- Linear Regression - Baseline Model
+- Polynomial Regression - Improved Baseline model
+- Ridge Regression - Final Model
+
+### Conclusion:
+- I started with simple Linear regression as it is the most basic model and upon checking the distribution plots there is
+definitely some room for improvement.So I tried polynomial regression but the R-score is Negative which indicates
+the current model is actually worse than the previous. Finally went with Ridge regression since it just adds bias to the
+linear regression to reduce the effect of collinear features which makes the model difficult to learn the function.
+
+### Results:
+- The R-score of the Linear Regression : 0.7456099370960487
+- The R-score of the Polynomial Regression : -48.24927413031234
+- The R-score of the Linear Regression : 0.8517594846848306
+
 # 1. Load Required Packages
 
 
@@ -286,7 +327,7 @@ cars.plot(kind = 'scatter' , x = 'engine_power', y = 'car_price')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_22_1.png)
+![png](output_23_1.png)
 
 
 They are strongly correlated. we can see some outliers so we better drop those rows other wise they will effect our model performance.
@@ -313,7 +354,7 @@ cars.plot(kind = 'scatter' , x = 'mileage', y = 'car_price')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_26_1.png)
+![png](output_27_1.png)
 
 
 There is an outlier here as well so we better drop that row as well.
@@ -333,7 +374,7 @@ cars.plot(kind = 'scatter' , x = 'mileage', y = 'car_price')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_28_1.png)
+![png](output_29_1.png)
 
 
 Looks like we have a strong negative correleation between car_price and mileage.
@@ -384,7 +425,7 @@ cars.drop(columns = ['feature7'],axis = 1,inplace = True)
 
 # Let's check out  fuel,car_paint_color,car_type columns
 
-Question_1: which is the most popular fuel type ?
+### Question_1: which is the most popular fuel type ?
 
 
 ```python
@@ -415,12 +456,14 @@ cars['fuel'].value_counts().plot(kind = 'barh')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_38_1.png)
+![png](output_39_1.png)
 
 
-Ans_1: 95% of the car fuel types are diesel.
+### Ans_1: 95% of the car fuel types are diesel.
 
-Question_2: which of the fuel type car is most expensive and which fuel type is lease expensive?
+---
+
+### Question_2: which of the fuel type car is most expensive and which fuel type is lease expensive?
 
 
 ```python
@@ -436,12 +479,14 @@ mean_price_fuel.sort_values(by= 'car_price',ascending  = False).plot(kind = 'bar
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_41_1.png)
+![png](output_43_1.png)
 
 
-Ans_2 : Hybrid_petrol fuel type car is the most expensive car and petrol fuel type is least expensive.
+### Ans_2 : Hybrid_petrol fuel type car is the most expensive car and petrol fuel type is least expensive.
 
-Question_3 : Does colour of a car have any impact on the car_price?
+---
+
+### Question_3 : Does colour of a car have any impact on the car_price?
 
 
 ```python
@@ -550,11 +595,12 @@ mean_colour_fuel.sort_values(by= 'car_price',ascending  = False)
 
 
 
-Ans_3: According to the data orange coloured car is most expensive and green colored car is least expensive.
-But color does not impact car price strongly. For e.g You have same car but with different colour.The prices vary very little.
+### Ans_3: According to the data orange coloured car is most expensive and green colored car is least expensive.But color does not impact car price strongly. For e.g You have same car but with different colour.The prices vary very little.
 
 
-Question_4: Which car_type is most expensive and which is least on average?
+---
+
+### Question_4: Which car_type is most expensive and which is least on average?
 
 
 ```python
@@ -569,10 +615,10 @@ cars['car_type'].value_counts().plot('barh')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_49_1.png)
+![png](output_53_1.png)
 
 
-Estate is the most popular car type!
+- Estate is the most popular car type!
 
 
 ```python
@@ -588,12 +634,14 @@ mean_car_type.sort_values(by= 'car_price',ascending  = False).plot(kind = 'barh'
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_51_1.png)
+![png](output_55_1.png)
 
 
-Ans_4: On average an SUV costs most followed by coupe and convertible!
+### Ans_4: On average an SUV costs most followed by coupe and convertible!
 
-Question_5: Which car model costs the highest on average
+--- 
+
+### Question_5: Which car model costs the highest on average
 
 
 ```python
@@ -609,12 +657,14 @@ mean_car_model.sort_values(by= 'car_price',ascending  = False).plot(kind = 'barh
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_54_1.png)
+![png](output_59_1.png)
 
 
-Ans_5: On average X_model costs most followed by Gran_model and Active_model
+### Ans_5: On average X_model costs most followed by Gran_model and Active_model
 
-Question_6 : what is the age of most of the cars in the data?
+--- 
+
+### Question_6 : what is the age of most of the cars in the data?
 
 
 ```python
@@ -629,12 +679,14 @@ cars['age_simplified'].value_counts().plot(kind = 'barh')
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_57_1.png)
+![png](output_63_1.png)
 
 
-Ans_6 : Most of cars age is "Old" (2-4)Years old.
+### Ans_6 : Most of cars age is "Old" (2-4)Years old.
 
-Question_7: What is the average price of each car_age category(New,little_old,old,very_old)
+--- 
+
+### Question_7: What is the average price of each car_age category(New,little_old,old,very_old)
 
 
 ```python
@@ -650,10 +702,10 @@ mean_car_age_price.sort_values(by= 'car_price',ascending  = False).plot(kind = '
 
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_60_1.png)
+![png](output_67_1.png)
 
 
-Ans_7: On Averge a car that is 2-4 years old('Little_old') is the costs more and car which is greater than 8 years('Very_Old') costs least.
+### Ans_7: On Averge a car that is 2-4 years old('Little_old') is the costs more and car which is greater than 8 years('Very_Old') costs least.
 
 # 5. Data Modelling 
 
@@ -788,7 +840,7 @@ plt.close()
     
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_79_1.png)
+![png](output_86_1.png)
 
 
 Distribution plot between test data and predicted data
@@ -811,7 +863,7 @@ plt.close()
 ```
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_81_0.png)
+![png](output_88_0.png)
 
 
 The predicted values are more than expected for higher prices and that pattern kept on going.
@@ -926,8 +978,14 @@ plt.close()
     
 
 
-![png](car_price_prediction_edurekha_files/car_price_prediction_edurekha_96_1.png)
+![png](output_103_1.png)
 
+
+## Conclusion: Below figure is distribution of values predicted Vs Actual Values(Left-LinReg,Right-RidgeReg)
+
+Linear Regression          |  Ridge Regression
+:-------------------------:|:-------------------------:
+![](car_price_prediction_edurekha_files/car_price_prediction_edurekha_79_1.png)  |  ![](car_price_prediction_edurekha_files/car_price_prediction_edurekha_96_1.png)
 
 
 ```python
