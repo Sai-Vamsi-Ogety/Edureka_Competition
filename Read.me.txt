@@ -1,0 +1,5 @@
+Run the file as:
+
+Python car_price_prediction.py data.csv
+
+It will generate csv file of prediction values in your current directory
